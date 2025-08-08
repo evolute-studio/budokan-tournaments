@@ -12,7 +12,7 @@ use tournaments::components::models::schedule::{Schedule, Phase};
 ///
 
 #[starknet::interface]
-trait ITournament<TState> {
+pub trait ITournament<TState> {
     fn create_tournament(
         ref self: TState,
         creator_rewards_address: ContractAddress,
@@ -109,7 +109,7 @@ pub mod tournament_component {
     pub enum Event {}
 
     #[embeddable_as(TournamentImpl)]
-    impl Tournament<
+    pub impl Tournament<
         TContractState,
         +HasComponent<TContractState>,
         +IWorldProvider<TContractState>,
