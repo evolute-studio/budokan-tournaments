@@ -1328,7 +1328,7 @@
   },
   "contracts": [
     {
-      "address": "0x6f6a240f48af69f60a4191cea98fa7809817c509f11b204e9d097db64fb72f8",
+      "address": "0x1a97ece0bc9a7671a6c062e1a11667f82f0f8077b17330c54d1c5245f474a93",
       "class_hash": "0x3332ee071d664343dc9fcb2cb08ee19179495dbdce73b7a8c1f495943c7f6cc",
       "abi": [
         {
@@ -1824,8 +1824,8 @@
         }
       ],
       "init_calldata": [],
-      "tag": "budokan_1_0_7-erc20_mock",
-      "selector": "0x2a80b03a5f8e6ae689e7e4f6182a81b7a0161966347ecb42044c15ca0b24d28",
+      "tag": "evolute_duel-erc20_mock",
+      "selector": "0x42f56b5f078fdfba1b5fe18c9743b593514d13ccff593d2c379cad4a6c9d9ff",
       "systems": [
         "dojo_init",
         "mint",
@@ -1837,7 +1837,7 @@
       ]
     },
     {
-      "address": "0x28e3d7cdc5a89997671fbe012daf2a22ecdb53efbb35d0813c9fa3cbb235355",
+      "address": "0x729df32177b1fbe07d6b3f0821c45705edbd609edfd56d7109da12d96da0a7e",
       "class_hash": "0x13061ceb738e0434cf13c9dca731a40ae995fec315e037d7c7ac99bb268a14e",
       "abi": [
         {
@@ -2528,8 +2528,8 @@
         }
       ],
       "init_calldata": [],
-      "tag": "budokan_1_0_7-erc721_mock",
-      "selector": "0x733b6f1d1c40973c07f56c28691f6fefb496b3c1f7df763c19d5338f97e1f8e",
+      "tag": "evolute_duel-erc721_mock",
+      "selector": "0x27a50ea2479f0f54ebeb3aecf02cd667cd89a3de2f9e6f73ac55ce98351fd8c",
       "systems": [
         "dojo_init",
         "mint",
@@ -2544,7 +2544,7 @@
       ]
     },
     {
-      "address": "0x53f990507aa2a19dfc83261a506e4e61a6912567a80b92b804a96e6671cba93",
+      "address": "0x69f21c2b287e8576166e2e2dbb85d08d9980067efeb117e2aa5a3c8d2d0b20c",
       "class_hash": "0x6afe60ae074a244fd471f58e1d08c6b51fd582c488b485a45d0f43693ab1361",
       "abi": [
         {
@@ -3610,8 +3610,8 @@
         }
       ],
       "init_calldata": [],
-      "tag": "budokan_1_0_7-game_mock",
-      "selector": "0x65bcdc88558219719d000ad01108689eb9df1a9d8ebadc546fd3088908725c9",
+      "tag": "evolute_duel-game_mock",
+      "selector": "0x401d3b9eaa8b55fe60b373298db507ce581347d72a8b08627a393419a144eed",
       "systems": [
         "start_game",
         "end_game",
@@ -3630,8 +3630,8 @@
       ]
     },
     {
-      "address": "0x354c5497ba3cb608235054677da69c0dcdd2d70c68ecf4a4b710f7a2f8e1135",
-      "class_hash": "0x7d78a43ea9309ed20bc9384f6d557711cfd6703302185df66d0b251c97c0438",
+      "address": "0x402b838f4263187c88f47fc441a8033550a564ac1cc3bae8f430b4dd5722550",
+      "class_hash": "0x66ba36c9578c27feb4bd247ddd0bae4d84889bf2e2e02ad41012393a12cef09",
       "abi": [
         {
           "type": "impl",
@@ -5118,8 +5118,8 @@
         }
       ],
       "init_calldata": [],
-      "tag": "budokan_1_0_7-tournament_mock",
-      "selector": "0x6020ffeebf82ff5ded74da4fbe0cbe9bfebdec69166c67aeee7debcec8fcd0d",
+      "tag": "evolute_duel-tournament_mock",
+      "selector": "0x20b75e342643755f0acef6f33cb3f28e2dc8553cf92febfefcdcca8349f06ad",
       "systems": [
         "initializer",
         "upgrade",
@@ -5144,116 +5144,116 @@
     {
       "members": [],
       "class_hash": "0x78422219d4ff90eaca938acd91e8d1dfed47be96340e1e13c348638d8825566",
-      "tag": "budokan_1_0_7-EntryCount",
-      "selector": "0x22e514d1824cf10de3d4327c8a7e8d64062b59d3e56f95f26569735962071ed"
+      "tag": "evolute_duel-EntryCount",
+      "selector": "0x7ce57358349dd9b45a458f3b00d0558f07b2b755f6dbfed6eb391718df64799"
     },
     {
       "members": [],
       "class_hash": "0x4c9aa5cf3f03bd208fcfc809bbefd59074e319870fd54e699df593d2df01b4d",
-      "tag": "budokan_1_0_7-GameCounter",
-      "selector": "0x597236bbb30c3c34f539a7aabc758edfbd5cf6200693181e8f5d037c6638727"
+      "tag": "evolute_duel-GameCounter",
+      "selector": "0x10be6f80ba56f0dd048ba52d85dc08f842a93adf7a91626e3c2012868d6a35c"
     },
     {
       "members": [],
       "class_hash": "0x2184a8d33905eed66c3a80bd753a579aadd0b8dd0652f9f513dc7f1949f53c4",
-      "tag": "budokan_1_0_7-GameMetadata",
-      "selector": "0x58ebcdc16dd09649c729d72b2e95cf3253077b4dec251edc4d10de3d9c1967b"
+      "tag": "evolute_duel-GameMetadata",
+      "selector": "0x2f47b7c307bcc9fc7b498a5c543be80066bce00beb5b89d5709201dbcf3c870"
     },
     {
       "members": [],
       "class_hash": "0xc7d0fa176501a408da3e5553695e9ed1c70bbc71198f8e0b9494fc0bad144f",
-      "tag": "budokan_1_0_7-Leaderboard",
-      "selector": "0x4fcd439e16a9ca9b5e553c83e3cc2196a9f4ab5e60b1249902309733bb5b810"
+      "tag": "evolute_duel-Leaderboard",
+      "selector": "0x150ff07b3d713cbc0a266c8baeda38e94fa51eb3599309548e74f81b01b1ad3"
     },
     {
       "members": [],
       "class_hash": "0x6e355bb1e763375ddfaa59349b5f86c52af1ed6d956f42ae40d532aef6c608f",
-      "tag": "budokan_1_0_7-PlatformMetrics",
-      "selector": "0x763e660d4ca7229ae401dc001dded5c6d48171a8f0296dda90e6d63f06a71fd"
+      "tag": "evolute_duel-PlatformMetrics",
+      "selector": "0x335790aac15e0519f7c9d283208e2d56ca9cc314efa1558f8b45d9541ed4a6e"
     },
     {
       "members": [],
       "class_hash": "0x52ade26b349972115690eb0977b3fe8f574f20bbf8a91ffe5d1763c6135077",
-      "tag": "budokan_1_0_7-Prize",
-      "selector": "0x672a74fc87a4dba8d0c0655432e0dce7e8667014ad0312ea0d9f97850c4fc48"
+      "tag": "evolute_duel-Prize",
+      "selector": "0x2b4490c8329cf442d188b25b26f368fe31a08263878b8be9cd90df9d4cb6ebf"
     },
     {
       "members": [],
       "class_hash": "0x32f594f0064b023859ad5cb18831a5880e310d9c4a898b75c02e1b2d7b17001",
-      "tag": "budokan_1_0_7-PrizeClaim",
-      "selector": "0x2055e7c91093da4103bf26c170ccf5a93e49d5d58e09659e6d775fcabdd00ae"
+      "tag": "evolute_duel-PrizeClaim",
+      "selector": "0x521ee16e53c383a298e5f266b35a58b0ccffb7ba66e9c501eedce65adce386"
     },
     {
       "members": [],
       "class_hash": "0x53e107f6f0a290d417c6c0f28df9fd199f8c7666cb61ac1fb24ea9da9519489",
-      "tag": "budokan_1_0_7-PrizeMetrics",
-      "selector": "0x1a5dcc814de3fb6c3c28c2f2289df6bcce2b075b17e4b79f2f21d6ec3545e5b"
+      "tag": "evolute_duel-PrizeMetrics",
+      "selector": "0x2720c6fd49986e88dd9617e61722a1942ccc7606a01726b2a0d14c43a4c1258"
     },
     {
       "members": [],
       "class_hash": "0x32fc5a1520015d90590fbedd6f4ce012d7c6a08e786f2a8b0ca2d2715302533",
-      "tag": "budokan_1_0_7-QualificationEntries",
-      "selector": "0x4f66ed4dd4758943c04a7d0a596e0623c4754263fc1fadb07519ae9d2a92fb5"
+      "tag": "evolute_duel-QualificationEntries",
+      "selector": "0x24809cf99f11dc9c62d4864a1805302d44900dbf7c3ab9a370705e4f81c058f"
     },
     {
       "members": [],
       "class_hash": "0x240dd50803b66aba4fd8232426f68469c592e4a88fd9c5bc9ec11fc6a6315f4",
-      "tag": "budokan_1_0_7-Registration",
-      "selector": "0x45170c6cc35262a33525faddba8ad6737550a44a05a5a70a747be0fbd454536"
+      "tag": "evolute_duel-Registration",
+      "selector": "0x1db21dead1a017ab3d5cb096795c1955768d9d74977afc7a002c144452e5176"
     },
     {
       "members": [],
       "class_hash": "0x7538cc093e191e767f1caf8ea3f1c4818e319db41d8f760e48753cb2e420156",
-      "tag": "budokan_1_0_7-Score",
-      "selector": "0x785dde5f77495852759fd4a68b9de28d28e3114781f16d97189caf7b1a06b59"
+      "tag": "evolute_duel-Score",
+      "selector": "0x1fefdc667e6b86a175507294909da8a06cc54aec97699c66fc2138397717cc2"
     },
     {
       "members": [],
       "class_hash": "0x1209baf4f84faefa02c38ae721ddc691755ff4ea5993861fa22d822c913ab5b",
-      "tag": "budokan_1_0_7-Settings",
-      "selector": "0x378447e0700545bb5603a1dd68745728f038826358be848c03e91cc55c6d027"
+      "tag": "evolute_duel-Settings",
+      "selector": "0x40bac98505241f9fe70fe3cde4ca277419399949d188f344a9ae841e2500b3f"
     },
     {
       "members": [],
       "class_hash": "0x4e0c7a60762ca47580e47d2d2dcb27dd5ad33262075cb9b126d670e97c67837",
-      "tag": "budokan_1_0_7-SettingsCounter",
-      "selector": "0x542f0d325af77e4f6c227630356ddbedeaf1d73b3176003e614a4154e771815"
+      "tag": "evolute_duel-SettingsCounter",
+      "selector": "0x5bc97ff304579de270b22c5ac1ba9a2f0cde677c04473ccfea2ed68edbdb77a"
     },
     {
       "members": [],
       "class_hash": "0x5a1e9671225dd42b4085d3fb27a7543ee87f0cb687514002e7b4d9fa77c78a1",
-      "tag": "budokan_1_0_7-SettingsDetails",
-      "selector": "0x65eeb06f5b238a4f57de7af97252d9f12af489a4de923520ea7e0b9484bca8f"
+      "tag": "evolute_duel-SettingsDetails",
+      "selector": "0x54e0cc05ab0bd15fad30ff9b0739d7022431d8161f9362e1a6284c4ed67bbde"
     },
     {
       "members": [],
       "class_hash": "0x4f8543d252f818a4efbbacf72260a4f3a757a91291878742681f6f8c4cd534e",
-      "tag": "budokan_1_0_7-Token",
-      "selector": "0x6a6002937ed8a2869abb8f1393cbb9467a42d44096efbf0751aac40a71a5062"
+      "tag": "evolute_duel-Token",
+      "selector": "0x658d10bf6c3f68871b51f7a9347731a58d521caa79fae2441dec2cc1a114b7b"
     },
     {
       "members": [],
       "class_hash": "0x336f9d3953c032d579de6675aa25e2903ea50708399ca5ec3312ee3480e7cca",
-      "tag": "budokan_1_0_7-TokenMetadata",
-      "selector": "0x6fc64c4a39c9cc0708abba7d54d55d4f7f81c803044006018d2b2f43fef9cad"
+      "tag": "evolute_duel-TokenMetadata",
+      "selector": "0x40c1342f90ac71bc310cb1267fd7db8ed6f30d2f1888e0d15bdf69217cd3ba8"
     },
     {
       "members": [],
       "class_hash": "0x669463fea499d5d8463e2ba035faa851789c88b2323745ee690e3308f12f3b1",
-      "tag": "budokan_1_0_7-Tournament",
-      "selector": "0x6795b0f039955e67af3ac1a8b697a7dafdb1d509927485d6deb78d6c7641f48"
+      "tag": "evolute_duel-Tournament",
+      "selector": "0x5dd12ee76135de9fb9563cd290f74499e4b174fd3f30003cbf77c56dd38b85e"
     },
     {
       "members": [],
       "class_hash": "0x553fc910fd75e751875f259c4553bbf959b6f8917b1153c7d8d05833c1fe114",
-      "tag": "budokan_1_0_7-TournamentConfig",
-      "selector": "0x8a56907e2201bb0f9905eb68ac2c5fdfeaf24fcd3fdb2fc13385d24215689e"
+      "tag": "evolute_duel-TournamentConfig",
+      "selector": "0xe7cca9e33bd398d1909a7818be494199a5b6821357f37960548ee4a29ff325"
     },
     {
       "members": [],
       "class_hash": "0x669857254f9cf1ff90e80b6cbc13876cbe4e7065ff2360adf85fe3ffd53c987",
-      "tag": "budokan_1_0_7-TournamentTokenMetrics",
-      "selector": "0x382d4c66a104562308603a2fe9f43c61c96916c0ca7d9ddd59d95b383872c86"
+      "tag": "evolute_duel-TournamentTokenMetrics",
+      "selector": "0x539e289b6e96e4e571589c203a4dd0cb144565a72aaf44d832d5ef95e921c5"
     }
   ],
   "events": [],

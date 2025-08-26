@@ -4,7 +4,7 @@ description = "Budokan Slot World"
 seed = "budokan"
 
 [namespace]
-default = "budokan_1_0_7"
+default = "evolute_duel"
 
 [env]
 chain_id = "WP_BUDOKAN"
@@ -15,27 +15,27 @@ private_key = "0xc5b2fcab997346f3ea1c00b002ecf6f382c5f9c9659a3894eb783c5320f912"
 
 [writers]
 # Tournament
-"budokan_1_0_7-Tournament" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-Registration" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-Leaderboard" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-PlatformMetrics" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-TournamentTokenMetrics" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-PrizeMetrics" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-EntryCount" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-Prize" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-Token" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-TournamentConfig" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-PrizeClaim" = ["budokan_1_0_7-tournament_mock"]
-"budokan_1_0_7-QualificationEntries" = ["budokan_1_0_7-tournament_mock"]
+"evolute_duel-Tournament" = ["evolute_duel-tournament_mock"]
+"evolute_duel-Registration" = ["evolute_duel-tournament_mock"]
+"evolute_duel-Leaderboard" = ["evolute_duel-tournament_mock"]
+"evolute_duel-PlatformMetrics" = ["evolute_duel-tournament_mock"]
+"evolute_duel-TournamentTokenMetrics" = ["evolute_duel-tournament_mock"]
+"evolute_duel-PrizeMetrics" = ["evolute_duel-tournament_mock"]
+"evolute_duel-EntryCount" = ["evolute_duel-tournament_mock"]
+"evolute_duel-Prize" = ["evolute_duel-tournament_mock"]
+"evolute_duel-Token" = ["evolute_duel-tournament_mock"]
+"evolute_duel-TournamentConfig" = ["evolute_duel-tournament_mock"]
+"evolute_duel-PrizeClaim" = ["evolute_duel-tournament_mock"]
+"evolute_duel-QualificationEntries" = ["evolute_duel-tournament_mock"]
 # Game
-"budokan_1_0_7-GameMetadata" = ["budokan_1_0_7-game_mock"]
-"budokan_1_0_7-GameCounter" = ["budokan_1_0_7-game_mock"]
-"budokan_1_0_7-SettingsDetails" = ["budokan_1_0_7-game_mock"]
-"budokan_1_0_7-SettingsCounter" = ["budokan_1_0_7-game_mock"]
-"budokan_1_0_7-Settings" = ["budokan_1_0_7-game_mock"]
-"budokan_1_0_7-TokenMetadata" = ["budokan_1_0_7-game_mock"]
-"budokan_1_0_7-Score" = ["budokan_1_0_7-game_mock"]
+"evolute_duel-GameMetadata" = ["evolute_duel-game_mock"]
+"evolute_duel-GameCounter" = ["evolute_duel-game_mock"]
+"evolute_duel-SettingsDetails" = ["evolute_duel-game_mock"]
+"evolute_duel-SettingsCounter" = ["evolute_duel-game_mock"]
+"evolute_duel-Settings" = ["evolute_duel-game_mock"]
+"evolute_duel-TokenMetadata" = ["evolute_duel-game_mock"]
+"evolute_duel-Score" = ["evolute_duel-game_mock"]
 
 [migration]
 order_inits = []
-skip_contracts = ["budokan_1_0_7-Budokan"]
+skip_contracts = ["evolute_duel-Budokan"]

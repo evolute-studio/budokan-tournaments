@@ -30,5 +30,5 @@ default = []
 
 
 [scripts]
-initializer = "sozo execute budokan_1_0_7-tournament_mock initializer 0 0 0x05b09b36012fa3e07f04d3d89198c80f093e117cb449ae8d5656f1b610c0b737 1"
-create_tournament = "sozo execute budokan_1_0_7-tournament_mock create_tournament 0x127fd5f1fe78a71f8bcd1fec63e3fe2f0486b6ecd5c86a0466c3a21fa5cfcec sstr:'Tournament' str:'Tournament Description' 1 0 1000000 1000 0x0392443d20e2e61078d0961f802457fe9b608ebb516b5e5e2578eb949a13b2de 0 3 0 0x05b09b36012fa3e07f04d3d89198c80f093e117cb449ae8d5656f1b610c0b737 10 arr:50,30,10 0 10 0 10 1"
+initializer = "sozo execute evolute_duel-tournament_mock initializer 0 0 0x05b09b36012fa3e07f04d3d89198c80f093e117cb449ae8d5656f1b610c0b737 1"
+create_tournament = "sozo execute evolute_duel-tournament_mock create_tournament 0x127fd5f1fe78a71f8bcd1fec63e3fe2f0486b6ecd5c86a0466c3a21fa5cfcec sstr:'Tournament' str:'Tournament Description' 1 0 1000000 1000 0x0392443d20e2e61078d0961f802457fe9b608ebb516b5e5e2578eb949a13b2de 0 3 0 0x05b09b36012fa3e07f04d3d89198c80f093e117cb449ae8d5656f1b610c0b737 10 arr:50,30,10 0 10 0 10 1"
