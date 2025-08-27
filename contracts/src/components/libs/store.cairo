@@ -113,10 +113,39 @@ pub impl StoreImpl of StoreTrait {
         entry_fee: Option<EntryFee>,
         entry_requirement: Option<EntryRequirement>,
     ) -> Tournament {
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Starting tournament creation in store",
+        );
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Creator token ID: {}",
+            creator_token_id,
+        );
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Tournament name: {}", metadata.name,
+        );
+
+        println!("[TOURNAMENT_COMPONENT::Store::create_tournament] Getting next tournament ID...");
+        let tournament_id = self.increment_and_get_tournament_count();
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Tournament ID assigned: {}",
+            tournament_id,
+        );
+
+        let current_timestamp = starknet::get_block_timestamp();
+        let caller_address = starknet::get_caller_address();
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Current timestamp: {}",
+            current_timestamp,
+        );
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Caller address: {:?}", caller_address,
+        );
+
+        println!("[TOURNAMENT_COMPONENT::Store::create_tournament] Creating tournament struct...");
         let tournament = Tournament {
-            id: self.increment_and_get_tournament_count(),
-            created_at: starknet::get_block_timestamp(),
-            created_by: starknet::get_caller_address(),
+            id: tournament_id,
+            created_at: current_timestamp,
+            created_by: caller_address,
             creator_token_id,
             metadata,
             schedule,
@@ -124,7 +153,19 @@ pub impl StoreImpl of StoreTrait {
             entry_fee,
             entry_requirement,
         };
+        println!("[TOURNAMENT_COMPONENT::Store::create_tournament] Tournament struct created");
+
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Writing tournament model to world...",
+        );
         self.world.write_model(@tournament);
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Tournament model written successfully",
+        );
+
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::create_tournament] Tournament creation in store completed",
+        );
         tournament
     }
 
@@ -200,9 +241,29 @@ pub impl StoreImpl of StoreTrait {
 
     #[inline(always)]
     fn increment_and_get_tournament_count(ref self: Store) -> u64 {
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::increment_and_get_tournament_count] Getting platform metrics...",
+        );
         let mut platform_metrics = self.get_platform_metrics();
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::increment_and_get_tournament_count] Current tournament count: {}",
+            platform_metrics.total_tournaments,
+        );
+
         platform_metrics.total_tournaments += 1;
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::increment_and_get_tournament_count] New tournament count: {}",
+            platform_metrics.total_tournaments,
+        );
+
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::increment_and_get_tournament_count] Updating platform metrics...",
+        );
         self.set_platform_metrics(@platform_metrics);
+        println!(
+            "[TOURNAMENT_COMPONENT::Store::increment_and_get_tournament_count] Platform metrics updated",
+        );
+
         platform_metrics.total_tournaments
     }
 

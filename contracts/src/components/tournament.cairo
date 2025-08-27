@@ -215,23 +215,80 @@ pub mod tournament_component {
             entry_fee: Option<EntryFee>,
             entry_requirement: Option<EntryRequirement>,
         ) -> TournamentModel {
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Starting tournament creation");
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Creator rewards address: {:?}",
+                creator_rewards_address,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Tournament name: {}", metadata.name,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Game address: {:?}", game_config.address,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Settings ID: {}",
+                game_config.settings_id,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Prize spots: {}",
+                game_config.prize_spots,
+            );
+
             let mut world = WorldTrait::storage(
                 self.get_contract().world_dispatcher(), @DEFAULT_NS(),
             );
-            let mut store: Store = StoreTrait::new(world);
+            println!("[TOURNAMENT_COMPONENT::create_tournament] World storage initialized");
 
+            let mut store: Store = StoreTrait::new(world);
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Store created");
+
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Validating schedule...");
             schedule.assert_is_valid();
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Schedule validation completed");
+
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Validating game config...");
             self._assert_valid_game_config(game_config);
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Game config validation completed");
 
             if let Option::Some(entry_fee) = entry_fee {
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry fee provided, validating...",
+                );
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry fee token: {:?}",
+                    entry_fee.token_address,
+                );
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry fee amount: {}",
+                    entry_fee.amount,
+                );
                 self._assert_valid_entry_fee(store, entry_fee, game_config.prize_spots);
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry fee validation completed",
+                );
+            } else {
+                println!("[TOURNAMENT_COMPONENT::create_tournament] No entry fee provided");
             }
 
             if let Option::Some(entry_requirement) = entry_requirement {
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry requirement provided, validating...",
+                );
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry limit: {}",
+                    entry_requirement.entry_limit,
+                );
                 self._assert_valid_entry_requirement(store, entry_requirement);
+                println!(
+                    "[TOURNAMENT_COMPONENT::create_tournament] Entry requirement validation completed",
+                );
+            } else {
+                println!("[TOURNAMENT_COMPONENT::create_tournament] No entry requirement provided");
             }
 
             // mint a game to the tournament creator for reward distribution
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Minting creator game token...");
             let creator_token_id = self
                 ._mint_game(
                     game_config.address,
@@ -240,11 +297,25 @@ pub mod tournament_component {
                     metadata.name,
                     creator_rewards_address,
                 );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Creator token ID minted: {}",
+                creator_token_id,
+            );
 
-            store
+            println!("[TOURNAMENT_COMPONENT::create_tournament] Creating tournament in store...");
+            let tournament = store
                 .create_tournament(
                     creator_token_id, metadata, schedule, game_config, entry_fee, entry_requirement,
-                )
+                );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Tournament created with ID: {}",
+                tournament.id,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::create_tournament] Tournament creation completed successfully",
+            );
+
+            tournament
         }
 
         /// @title Enter tournament
@@ -620,7 +691,25 @@ pub mod tournament_component {
             store: Store,
             entry_requirement: EntryRequirement,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_requirement] Starting entry requirement validation",
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_requirement] Entry limit: {}",
+                entry_requirement.entry_limit,
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_requirement] Validating gated type...",
+            );
             self._assert_gated_type_validates(store, entry_requirement);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_requirement] Gated type validation completed",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_requirement] Entry requirement validation completed successfully",
+            );
         }
 
         #[inline(always)]
@@ -630,30 +719,118 @@ pub mod tournament_component {
             entry_fee: EntryFee,
             prize_spots: u8,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Starting entry fee validation",
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Entry fee token address: {:?}",
+                entry_fee.token_address,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Entry fee amount: {}",
+                entry_fee.amount,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Prize spots: {}", prize_spots,
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Checking entry fee token registration...",
+            );
             self._assert_entry_fee_token_registered(@store.get_token(entry_fee.token_address));
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Entry fee token registration validated",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Validating payout distribution...",
+            );
             self._assert_valid_payout_distribution(entry_fee, prize_spots);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Payout distribution validated",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_entry_fee] Entry fee validation completed successfully",
+            );
         }
 
         #[inline(always)]
         fn _assert_valid_game_config(
             self: @ComponentState<TContractState>, game_config: GameConfig,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Starting game config validation",
+            );
             let contract_address = game_config.address;
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Game contract address: {:?}",
+                contract_address,
+            );
 
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Checking winners count > 0...",
+            );
             self._assert_winners_count_greater_than_zero(game_config.prize_spots);
-            self._assert_settings_exists(contract_address, game_config.settings_id);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Winners count validation passed",
+            );
 
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Checking settings exist...",
+            );
+            self._assert_settings_exists(contract_address, game_config.settings_id);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Settings existence validation passed",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Creating SRC5 dispatcher...",
+            );
             let src5_dispatcher = ISRC5Dispatcher { contract_address };
+            println!("[TOURNAMENT_COMPONENT::_assert_valid_game_config] SRC5 dispatcher created");
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Checking game interface support...",
+            );
             self._assert_supports_game_interface(src5_dispatcher, contract_address);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Game interface support validated",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Checking game metadata interface support...",
+            );
             self._assert_supports_game_metadata_interface(src5_dispatcher, contract_address);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Game metadata interface support validated",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Checking ERC721 interface support...",
+            );
             self._assert_game_supports_erc721_interface(src5_dispatcher, contract_address);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] ERC721 interface support validated",
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_valid_game_config] Game config validation completed successfully",
+            );
         }
 
         #[inline(always)]
         fn _assert_winners_count_greater_than_zero(
             self: @ComponentState<TContractState>, prize_spots: u8,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_winners_count_greater_than_zero] Checking prize spots: {}",
+                prize_spots,
+            );
             assert!(prize_spots > 0, "Tournament: Winners count must be greater than zero");
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_winners_count_greater_than_zero] Prize spots validation passed",
+            );
         }
 
         fn _assert_valid_payout_distribution(
@@ -698,11 +875,28 @@ pub mod tournament_component {
             src5_dispatcher: ISRC5Dispatcher,
             address: ContractAddress,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_interface] Checking game interface support",
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_interface] Game address: {:?}",
+                address,
+            );
+
+            let supports_interface = src5_dispatcher.supports_interface(IGAMETOKEN_ID);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_interface] Supports IGame interface: {}",
+                supports_interface,
+            );
+
             let address: felt252 = address.into();
             assert!(
-                src5_dispatcher.supports_interface(IGAMETOKEN_ID),
+                supports_interface,
                 "Tournament: Game address {} does not support IGame interface",
                 address,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_interface] Game interface support validated",
             );
         }
 
@@ -712,11 +906,28 @@ pub mod tournament_component {
             src5_dispatcher: ISRC5Dispatcher,
             address: ContractAddress,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_metadata_interface] Checking game metadata interface support",
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_metadata_interface] Game address: {:?}",
+                address,
+            );
+
+            let supports_metadata_interface = src5_dispatcher.supports_interface(IGAME_METADATA_ID);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_metadata_interface] Supports IGameMetadata interface: {}",
+                supports_metadata_interface,
+            );
+
             let address_felt: felt252 = address.into();
             assert!(
-                src5_dispatcher.supports_interface(IGAME_METADATA_ID),
+                supports_metadata_interface,
                 "Tournament: Game address {} does not support IGameMetadata interface",
                 address_felt,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_supports_game_metadata_interface] Game metadata interface support validated",
             );
         }
 
@@ -726,11 +937,28 @@ pub mod tournament_component {
             src5_dispatcher: ISRC5Dispatcher,
             address: ContractAddress,
         ) {
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_game_supports_erc721_interface] Checking ERC721 interface support",
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_game_supports_erc721_interface] Game address: {:?}",
+                address,
+            );
+
+            let supports_erc721 = src5_dispatcher.supports_interface(IERC721_ID);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_game_supports_erc721_interface] Supports IERC721 interface: {}",
+                supports_erc721,
+            );
+
             let address_felt: felt252 = address.into();
             assert!(
-                src5_dispatcher.supports_interface(IERC721_ID),
+                supports_erc721,
                 "Tournament: Game address {} does not support IERC721 interface",
                 address_felt,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_game_supports_erc721_interface] ERC721 interface support validated",
             );
         }
 
@@ -738,14 +966,36 @@ pub mod tournament_component {
         fn _assert_settings_exists(
             self: @ComponentState<TContractState>, game: ContractAddress, settings_id: u32,
         ) {
+            println!("[TOURNAMENT_COMPONENT::_assert_settings_exists] Checking settings existence");
+            println!("[TOURNAMENT_COMPONENT::_assert_settings_exists] Game address: {:?}", game);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_settings_exists] Settings ID: {}", settings_id,
+            );
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_settings_exists] Creating settings dispatcher...",
+            );
             let settings_dispatcher = ISettingsDispatcher { contract_address: game };
+            println!("[TOURNAMENT_COMPONENT::_assert_settings_exists] Settings dispatcher created");
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_settings_exists] Checking if setting exists...",
+            );
             let settings_exist = settings_dispatcher.setting_exists(settings_id);
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_settings_exists] Settings exist: {}",
+                settings_exist,
+            );
+
             let game_address: felt252 = game.into();
             assert!(
                 settings_exist,
                 "Tournament: Settings id {} is not found on game address {}",
                 settings_id,
                 game_address,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_assert_settings_exists] Settings existence validated",
             );
         }
 
@@ -1152,15 +1402,39 @@ pub mod tournament_component {
             player_name: felt252,
             to_address: ContractAddress,
         ) -> u64 {
+            println!("[TOURNAMENT_COMPONENT::_mint_game] Starting game token minting");
+            println!("[TOURNAMENT_COMPONENT::_mint_game] Game address: {:?}", game_address);
+            println!("[TOURNAMENT_COMPONENT::_mint_game] Settings ID: {}", settings_id);
+            println!("[TOURNAMENT_COMPONENT::_mint_game] Player name: {}", player_name);
+            println!("[TOURNAMENT_COMPONENT::_mint_game] To address: {:?}", to_address);
+            println!(
+                "[TOURNAMENT_COMPONENT::_mint_game] Game start time: {}", game_schedule.game.start,
+            );
+            println!(
+                "[TOURNAMENT_COMPONENT::_mint_game] Game end time: {}", game_schedule.game.end,
+            );
+
+            println!("[TOURNAMENT_COMPONENT::_mint_game] Creating game token dispatcher...");
             let game_dispatcher = IGameTokenDispatcher { contract_address: game_address };
-            game_dispatcher
+            println!("[TOURNAMENT_COMPONENT::_mint_game] Game dispatcher created");
+
+            println!(
+                "[TOURNAMENT_COMPONENT::_mint_game] Calling mint function on game contract...",
+            );
+            let token_id = game_dispatcher
                 .mint(
                     player_name,
                     settings_id,
                     Option::Some(game_schedule.game.start),
                     Option::Some(game_schedule.game.end),
                     to_address,
-                )
+                );
+            println!(
+                "[TOURNAMENT_COMPONENT::_mint_game] Game token minted successfully with ID: {}",
+                token_id,
+            );
+
+            token_id
         }
 
         #[inline(always)]
