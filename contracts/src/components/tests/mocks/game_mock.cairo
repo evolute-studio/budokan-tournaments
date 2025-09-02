@@ -27,7 +27,7 @@ mod game_mock {
     use tournaments::components::libs::game_store::{Store, StoreTrait};
     use tournaments::components::models::game::{SettingsDetails, Score};
 
-    use starknet::{ContractAddress, contract_address_const};
+    use starknet::{ContractAddress};
 
     component!(path: game_component, storage: game, event: GameEvent);
     component!(path: SRC5Component, storage: src5, event: SRC5Event);
@@ -92,7 +92,7 @@ mod game_mock {
         ("https://game.io/image.png")
     }
     fn GAME_CREATOR() -> ContractAddress {
-        contract_address_const::<'GAME CREATOR'>()
+        TryInto::<felt252, ContractAddress>::try_into('GAME CREATOR').unwrap()
     }
     //*******************************
 

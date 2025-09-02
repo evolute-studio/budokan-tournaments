@@ -1,4 +1,5 @@
-use starknet::{ContractAddress, contract_address_const};
+use starknet::{ContractAddress};
+use core::num::traits::{Zero};
 
 /// Raise a number to a power.
 /// O(log n) time complexity.
@@ -22,5 +23,5 @@ pub fn pow<T, +Sub<T>, +Mul<T>, +Div<T>, +Rem<T>, +PartialEq<T>, +Into<u8, T>, +
 
 #[inline(always)]
 pub fn ZERO() -> ContractAddress {
-    (contract_address_const::<0x0>())
+    (Zero::zero())
 }
