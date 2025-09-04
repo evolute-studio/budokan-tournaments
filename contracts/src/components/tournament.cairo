@@ -315,8 +315,6 @@ pub mod tournament_component {
                 "[TOURNAMENT_COMPONENT::create_tournament] Tournament creation completed successfully",
             );
 
-            let entry_number = store.increment_and_get_tournament_entry_count(tournament.id);
-
             // associate game token with tournament via registration
             store
                 .set_registration(
@@ -324,7 +322,7 @@ pub mod tournament_component {
                         game_token_id: creator_token_id,
                         game_address: tournament.game_config.address,
                         tournament_id: tournament.id,
-                        entry_number,
+                        entry_number: 0,
                         has_submitted: false,
                     },
                 );
