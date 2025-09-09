@@ -3,3 +3,4 @@ target/
 scripts/deploy_mainnet.sh
 .env
 .env.sepolia
+manifest_*
