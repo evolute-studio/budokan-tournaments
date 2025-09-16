@@ -1,5 +1,5 @@
 [package]
-cairo-version = "=2.12.1"
+cairo-version = "=2.12.2"
 name = "tournaments"
 version = "0.0.1"
 edition = "2024_07"
@@ -14,13 +14,13 @@ allowed-libfuncs-list.name = "experimental"
 [dependencies]
 openzeppelin_introspection = { git = "https://github.com/openzeppelin/cairo-contracts", tag = "v1.0.0"}
 openzeppelin_token = { git = "https://github.com/openzeppelin/cairo-contracts", tag = "v1.0.0"}
-dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v1.7.0-alpha.3" }
-dojo_macros = { git = "https://github.com/dojoengine/dojo", tag = "v1.7.0-alpha.3" }
-starknet = "2.12.1"
+dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v1.7.0-alpha.4" }
+dojo_macros = { git = "https://github.com/dojoengine/dojo", tag = "v1.7.0-alpha.4" }
+starknet = "2.12.2"
 
 [dev-dependencies]
-dojo_cairo_test = { git = "https://github.com/dojoengine/dojo.git", tag = "v1.7.0-alpha.3" }
-cairo_test = "2.12.1"
+dojo_cairo_test = { git = "https://github.com/dojoengine/dojo.git", tag = "v1.7.0-alpha.4" }
+cairo_test = "2.12.2"
 
 [features]
 default = []
